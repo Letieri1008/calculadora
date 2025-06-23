@@ -1,0 +1,84 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# Suas funções de cálculo
+def somar(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+def multiplicar(a, b):
+    return a * b
+
+def dividir(a, b):
+    if b == 0:
+        return "Divisão inválida"
+    return a / b
+
+# Função para calcular com base na operação selecionada
+def calcular():
+    try:
+        num1 = float(entry_num1.get())
+        num2 = float(entry_num2.get())
+    except ValueError:
+        messagebox.showerror("Erro", "Digite números válidos!")
+        return
+    
+    operacao = var_operacao.get()
+    if operacao == 'Somar':
+        resultado = somar(num1, num2)
+        sinal = '+'
+    elif operacao == 'Subtrair':
+        resultado = subtrair(num1, num2)
+        sinal = '-'
+    elif operacao == 'Multiplicar':
+        resultado = multiplicar(num1, num2)
+        sinal = '*'
+    elif operacao == 'Dividir':
+        resultado = dividir(num1, num2)
+        sinal = '/'
+    else:
+        messagebox.showerror("Erro", "Selecione uma operação!")
+        return
+    
+    label_resultado.config(text=f"Resultado: {num1} {sinal} {num2} = {resultado}")
+
+# Criação da janela principal
+janela = tk.Tk()
+janela.title("Calculadora Simples")
+janela.geometry("350x250")
+janela.resizable(False, False)
+
+# Entrada do primeiro número
+tk.Label(janela, text="Primeiro número:").pack(pady=5)
+entry_num1 = tk.Entry(janela)
+entry_num1.pack()
+
+# Entrada do segundo número
+tk.Label(janela, text="Segundo número:").pack(pady=5)
+entry_num2 = tk.Entry(janela)
+entry_num2.pack()
+
+# Escolha da operação
+var_operacao = tk.StringVar(value="")  # variável que guarda a operação selecionada
+
+frame_operacoes = tk.Frame(janela)
+frame_operacoes.pack(pady=10)
+
+# Radio buttons para escolher operação
+tk.Radiobutton(frame_operacoes, text="Somar", variable=var_operacao, value="Somar").pack(side=tk.LEFT, padx=5)
+tk.Radiobutton(frame_operacoes, text="Subtrair", variable=var_operacao, value="Subtrair").pack(side=tk.LEFT, padx=5)
+tk.Radiobutton(frame_operacoes, text="Multiplicar", variable=var_operacao, value="Multiplicar").pack(side=tk.LEFT, padx=5)
+tk.Radiobutton(frame_operacoes, text="Dividir", variable=var_operacao, value="Dividir").pack(side=tk.LEFT, padx=5)
+
+# Botão calcular
+btn_calcular = tk.Button(janela, text="Calcular", command=calcular)
+btn_calcular.pack(pady=10)
+
+# Label para mostrar o resultado
+label_resultado = tk.Label(janela, text="Resultado:")
+label_resultado.pack()
+
+# Rodar a janela
+janela.mainloop()
