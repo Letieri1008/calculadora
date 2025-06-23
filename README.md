@@ -83,7 +83,7 @@ python nome_do_arquivo.py
 
 ---
 
-## 🏗️ Melhorias que podem ser feitas
+## 🏗 Melhorias que podem ser feitas
 
 * 🎨 Melhorar o layout (usar `grid()` em vez de `pack()`).
 * 💡 Adicionar operações mais avançadas (potência, raiz, etc.).
@@ -97,5 +97,3 @@ python nome_do_arquivo.py
 Esse projeto é simples, mas se quiser melhorar, fique à vontade para abrir uma issue ou fazer um pull request!
 
 ---
-
-Se quiser, eu posso gerar o arquivo `README.md` prontinho pra você subir no GitHub. Quer? 💪
